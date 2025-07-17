@@ -5,11 +5,14 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\EventsController;
 use App\Http\Controllers\Admin\HeroSliderController;
 use App\Http\Controllers\Admin\LocationsController;
+use App\Http\Controllers\Admin\LogosController;
 use App\Http\Controllers\Admin\MilestoneController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\ProjectsController;
 use App\Http\Controllers\Admin\TechnologiesController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\SubscriptionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -48,27 +51,44 @@ Route::post('/milestones', [MilestoneController::class, 'store']);
 Route::get('/milestones/{id}', [MilestoneController::class, 'show']);
 Route::put('/milestones/{id}', [MilestoneController::class, 'update']);
 Route::delete('/milestones/{id}', [MilestoneController::class, 'destroy']);
-// News routes
+// projects routes
 Route::get('/projects', [ProjectsController::class, 'index']);
 Route::post('/projects', [ProjectsController::class, 'store']);
 Route::get('/projects/{id}', [ProjectsController::class, 'show']);
 Route::put('/projects/{id}', [ProjectsController::class, 'update']);
 Route::delete('/projects/{id}', [ProjectsController::class, 'destroy']);
-// News routes
+// technologies routes
 Route::get('/technologies', [TechnologiesController::class, 'index']);
 Route::post('/technologies', [TechnologiesController::class, 'store']);
 Route::get('/technologies/{id}', [TechnologiesController::class, 'show']);
 Route::put('/technologies/{id}', [TechnologiesController::class, 'update']);
 Route::delete('/technologies/{id}', [TechnologiesController::class, 'destroy']);
-// News routes
+// locations routes
 Route::get('/locations', [LocationsController::class, 'index']);
 Route::post('/locations', [LocationsController::class, 'store']);
 Route::get('/locations/{id}', [LocationsController::class, 'show']);
 Route::put('/locations/{id}', [LocationsController::class, 'update']);
 Route::delete('/locations/{id}', [LocationsController::class, 'destroy']);
 
+//Infinite loop logos
+Route::get('/logos', [LogosController::class, 'index']);
+Route::post('/logos', [LogosController::class, 'store']);
+Route::get('/logos/{id}', [LogosController::class, 'show']);
+Route::put('/logos/{id}', [LogosController::class, 'update']);
+Route::delete('/logos/{id}', [LogosController::class, 'destroy']);
 
 });
 
+Route::get('about' , [FrontendController::class , 'about']);
 Route::get('about-data' , [FrontendController::class , 'index']);
 Route::get('hero' , [FrontendController::class , 'index']);
+Route::get('milestone' , [FrontendController::class , 'index']);
+Route::get('projects' , [FrontendController::class , 'projects']);
+Route::get('technologies' , [FrontendController::class , 'technologies']);
+Route::get('logos' , [FrontendController::class , 'logos']);
+Route::get('news' , [FrontendController::class , 'news']);
+Route::get('events' , [FrontendController::class , 'events']);
+
+
+Route::post('/subscribe', [SubscriptionController::class, 'subscribe']);
+Route::post('/contact', [ContactController::class, 'submit']);

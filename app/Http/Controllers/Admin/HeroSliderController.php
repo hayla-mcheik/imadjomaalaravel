@@ -16,7 +16,9 @@ class HeroSliderController extends Controller
                 'message' => 'heroslider information not found'
             ], 404);
         }
-        return response()->json($heroslider);
+        return response()->json([
+'hero' => $heroslider
+        ]);
     }
 
 
