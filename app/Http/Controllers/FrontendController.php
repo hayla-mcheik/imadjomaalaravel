@@ -22,13 +22,11 @@ class FrontendController extends Controller
         $hero = HeroSlider::first();
         $milestone = Milestone::all();
         $logos = Logos::all();
-        $locations = Locations::all();
         return response()->json([
 'about' => $about,
 'hero' => $hero,
 'milestone' => $milestone,
 'logos' => $logos,
-'locations' => $locations
         ]);
     }
     public function about()
@@ -47,33 +45,42 @@ class FrontendController extends Controller
 'logos' => $logos,
         ]);
     }
-    public function news()
-    {
-        $news = News::all();
-        return response()->json([
-'news' => $news
-        ]);
-    }
+public function news()
+{
+    $newsthree = News::take(3)->get();
+    $news = News::all();
+    return response()->json([
+        'newsthree' => $newsthree,
+        'news' => $news,
+    ]);
+}
+
 
         public function events()
     {
+        $eventsthree = Events::take(3)->get();
         $events = Events::all();
         return response()->json([
-'events' => $events
+'eventsthree' => $eventsthree,
+'events' => $events,
         ]);
     }
 
         public function projects()
     {
+        $projectssix = Projects::take(6)->get();
         $projects = Projects::all();
         return response()->json([
+'projectssix' => $projectssix,
 'projects' => $projects
         ]);
     }
         public function technologies()
     {
+        $technologiessix = Technologies::take(6)->get();
         $technologies = Technologies::all();
         return response()->json([
+'technologiessix' => $technologiessix,
 'technologies' => $technologies
         ]);
     }

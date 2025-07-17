@@ -10,7 +10,7 @@ class LocationsController extends Controller
 {
         public function index()
     {
-        $locations = Locations::orderBy('date', 'desc')->get();
+        $locations = Locations::all();
         return response()->json($locations);
     }
 
@@ -20,9 +20,10 @@ class LocationsController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'title' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|max:255',
+            'phone' => 'required|string|max:255',
             'description' => 'required|string',
-            'date' => 'required|date',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
@@ -69,10 +70,11 @@ class LocationsController extends Controller
         }
 
         $validatedData = $request->validate([
-            'title' => 'sometimes|string|max:255',
-            'description' => 'sometimes|string',
-            'date' => 'sometimes|date',
-            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048',
+         'name' => 'sometimes|string|max:255',
+        'phone' => 'sometimes|string|max:255',
+        'email' => 'sometimes|string|max:255',
+        'description' => 'sometimes|string',
+        'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         if ($request->hasFile('image')) {
