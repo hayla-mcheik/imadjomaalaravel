@@ -77,4 +77,12 @@ class FrontendController extends Controller
 'technologies' => $technologies
         ]);
     }
+
+    public function locations()
+    {
+        $locations = Locations::all();
+        return response()->json([
+            'locations' => $locations
+        ]);
+    }
 }

@@ -88,6 +88,7 @@ Route::get('technologies' , [FrontendController::class , 'technologies']);
 Route::get('logos' , [FrontendController::class , 'logos']);
 Route::get('news' , [FrontendController::class , 'news']);
 Route::get('events' , [FrontendController::class , 'events']);
+Route::get('locations' , [FrontendController::class , 'locations']);
 
 
 Route::post('/subscribe', [SubscriptionController::class, 'subscribe']);
