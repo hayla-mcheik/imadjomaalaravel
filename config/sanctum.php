@@ -74,6 +74,7 @@ return [
     | request. You may change the middleware listed below as required.
     |
     */
+    
 
     'middleware' => [
         'authenticate_session' => Laravel\Sanctum\Http\Middleware\AuthenticateSession::class,
