@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\ProjectsController;
 use App\Http\Controllers\Admin\TechnologiesController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SubscriptionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -77,6 +78,9 @@ Route::get('/logos/{id}', [LogosController::class, 'show']);
 Route::put('/logos/{id}', [LogosController::class, 'update']);
 Route::delete('/logos/{id}', [LogosController::class, 'destroy']);
 
+Route::get('/settings', [SettingController::class, 'index']);
+Route::post('/settings', [SettingController::class, 'update']);
+
 });
 
 Route::get('about' , [FrontendController::class , 'about']);
@@ -89,6 +93,7 @@ Route::get('logos' , [FrontendController::class , 'logos']);
 Route::get('news' , [FrontendController::class , 'news']);
 Route::get('events' , [FrontendController::class , 'events']);
 Route::get('locations' , [FrontendController::class , 'locations']);
+Route::get('settings' , [FrontendController::class , 'settings']);
 
 
 Route::post('/subscribe', [SubscriptionController::class, 'subscribe']);

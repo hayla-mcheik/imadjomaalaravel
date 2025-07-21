@@ -10,6 +10,7 @@ use App\Models\Logos;
 use App\Models\Milestone;
 use App\Models\News;
 use App\Models\Projects;
+use App\Models\Settings;
 use App\Models\Technologies;
 use Illuminate\Http\Request;
 use phpDocumentor\Reflection\Location;
@@ -90,6 +91,14 @@ public function news()
         $locations = Locations::all();
         return response()->json([
             'locations' => $locations
+        ]);
+    }
+
+        public function settings()
+    {
+        $settings = Settings::all();
+        return response()->json([
+            'settings' => $settings
         ]);
     }
 }
