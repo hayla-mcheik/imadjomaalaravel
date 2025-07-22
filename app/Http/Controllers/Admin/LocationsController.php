@@ -24,6 +24,9 @@ class LocationsController extends Controller
             'email' => 'required|string|max:255',
             'phone' => 'required|string|max:255',
             'description' => 'required|string',
+            'position_x' => 'required|string',
+            'position_y' => 'required|string',
+            'color' => 'required|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
@@ -74,6 +77,9 @@ class LocationsController extends Controller
         'phone' => 'sometimes|string|max:255',
         'email' => 'sometimes|string|max:255',
         'description' => 'sometimes|string',
+        'position_x' => 'required|string',
+    'position_y' => 'required|string',
+    'color' => 'required|string',
         'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 

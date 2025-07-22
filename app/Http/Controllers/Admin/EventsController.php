@@ -21,6 +21,7 @@ class EventsController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
+            'links' => 'required|string',
             'description' => 'required|string',
             'locations' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -72,6 +73,7 @@ public function update(Request $request, $id)
 
     $validatedData = $request->validate([
         'title' => 'sometimes|string|max:255',
+        'links' => 'required|string',
         'description' => 'sometimes|string',
         'locations' => 'sometimes|string',
         'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048',

@@ -21,6 +21,7 @@ class NewsController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
+            'links' => 'required|string',
             'description' => 'required|string',
             'date' => 'required|date',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -70,6 +71,7 @@ class NewsController extends Controller
 
         $validatedData = $request->validate([
             'title' => 'sometimes|string|max:255',
+                    'links' => 'required|string',
             'description' => 'sometimes|string',
             'date' => 'sometimes|date',
             'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048',
