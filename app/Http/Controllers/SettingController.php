@@ -43,10 +43,10 @@ class SettingController extends Controller
 
         if ($request->hasFile('image')) {
             // Delete old image if exists
-            if ($settings->logo) {
-                Storage::delete($settings->logo);
+            if ($settings->image) {
+                Storage::delete($settings->image);
             }
-                    $path = $request->file('logo')->store('hero', 'public');
+                    $path = $request->file('image')->store('hero', 'public');
               $validatedData['image'] = 'storage/' . $path;
         }
 
@@ -55,7 +55,7 @@ class SettingController extends Controller
 
         return response()->json([
             'message' => 'settings information updated successfully',
-            'data' => $settings
+            'settings' => $settings
         ]);
     }
 }
