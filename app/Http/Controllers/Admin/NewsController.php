@@ -24,7 +24,7 @@ class NewsController extends Controller
             'links' => 'required|string',
             'description' => 'required|string',
             'date' => 'required|date',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
 
         if ($request->hasFile('image')) {
@@ -74,7 +74,7 @@ class NewsController extends Controller
                     'links' => 'required|string',
             'description' => 'sometimes|string',
             'date' => 'sometimes|date',
-            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
 
         if ($request->hasFile('image')) {
