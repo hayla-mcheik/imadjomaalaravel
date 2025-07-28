@@ -12,6 +12,7 @@ use App\Models\News;
 use App\Models\Projects;
 use App\Models\Settings;
 use App\Models\Technologies;
+use App\Models\Video;
 use Illuminate\Http\Request;
 use phpDocumentor\Reflection\Location;
 
@@ -26,6 +27,13 @@ class FrontendController extends Controller
 'about' => $about,
 'hero' => $hero,
 'logos' => $logos,
+        ]);
+    }
+        public function video()
+    {
+        $video = Video::first();
+        return response()->json([
+'video' => $video,
         ]);
     }
     public function about()
@@ -99,4 +107,5 @@ public function news()
             'settings' => $settings
         ]);
     }
+
 }

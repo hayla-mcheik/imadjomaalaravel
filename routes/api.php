@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\MilestoneController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\ProjectsController;
 use App\Http\Controllers\Admin\TechnologiesController;
+use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\SettingController;
@@ -33,6 +34,10 @@ Route::post('/about', [AboutController::class, 'update']);
 // HeroSlider 
 Route::get('/heroslider', [HeroSliderController::class, 'index']);
 Route::post('/heroslider', [HeroSliderController::class, 'update']);
+
+Route::get('/video', [VideoController::class, 'index']);
+Route::post('/video', [VideoController::class, 'update']);
+
 
 // News routes
 Route::get('/news', [NewsController::class, 'index']);
@@ -94,7 +99,7 @@ Route::get('news' , [FrontendController::class , 'news']);
 Route::get('events' , [FrontendController::class , 'events']);
 Route::get('locations' , [FrontendController::class , 'locations']);
 Route::get('settings' , [FrontendController::class , 'settings']);
-
+Route::get('video' , [FrontendController::class , 'video']);
 
 Route::post('/subscribe', [SubscriptionController::class, 'subscribe']);
 Route::post('/contact', [ContactController::class, 'submit']);
