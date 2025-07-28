@@ -21,12 +21,10 @@ class FrontendController extends Controller
     {
         $about = About::first();
         $hero = HeroSlider::first();
-        $milestone = Milestone::all();
         $logos = Logos::all();
         return response()->json([
 'about' => $about,
 'hero' => $hero,
-'milestone' => $milestone,
 'logos' => $logos,
         ]);
     }

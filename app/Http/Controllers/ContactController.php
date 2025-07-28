@@ -13,7 +13,7 @@ class ContactController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|email',
-            'phone' => 'nullable|string|max:20',
+            'contact' => 'nullable|string|max:20',
             'message' => 'required|string|min:10'
         ]);
 
@@ -24,7 +24,7 @@ class ContactController extends Controller
             ], 422);
         }
 
-        Contact::create($request->only(['name', 'email', 'phone', 'message']));
+        Contact::create($request->only(['name', 'email', 'contact', 'message']));
 
         return response()->json([
             'success' => true,

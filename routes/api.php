@@ -86,7 +86,7 @@ Route::post('/settings', [SettingController::class, 'update']);
 Route::get('about' , [FrontendController::class , 'about']);
 Route::get('about-data' , [FrontendController::class , 'index']);
 Route::get('hero' , [FrontendController::class , 'index']);
-Route::get('milestone' , [FrontendController::class , 'index']);
+Route::get('milestone' , [FrontendController::class , 'about']);
 Route::get('projects' , [FrontendController::class , 'projects']);
 Route::get('technologies' , [FrontendController::class , 'technologies']);
 Route::get('logos' , [FrontendController::class , 'logos']);

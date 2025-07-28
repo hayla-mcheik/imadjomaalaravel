@@ -77,8 +77,8 @@ class LocationsController extends Controller
         'phone' => 'sometimes|string|max:255',
         'email' => 'sometimes|string|max:255',
         'description' => 'sometimes|string',
-        'position_x' => 'required|string',
-    'position_y' => 'required|string',
+'position_x' => 'required|numeric|between:0,100',
+'position_y' => 'required|numeric|between:0,100',
     'color' => 'required|string',
         'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
