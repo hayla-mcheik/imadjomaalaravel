@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Video;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class VideoController extends Controller
 {
@@ -27,25 +26,32 @@ class VideoController extends Controller
         $video = Video::firstOrNew();
         
         $validatedData = $request->validate([
-            'video' => 'sometimes|file|mimetypes:video/mp4,video/quicktime,video/x-msvideo,video/x-flv,video/webm|max:50000', // ~50MB
+            'video' => 'required|url|starts_with:https://www.youtube.com/watch,https://youtu.be/',
         ]);
 
-        if ($request->hasFile('video')) {
-            // Delete old video if exists
-            if ($video->video) {
-                Storage::disk('public')->delete(str_replace('storage/', '', $video->video));
-            }
-            
-            $path = $request->file('video')->store('videos', 'public');
-            $validatedData['video'] = 'storage/' . $path;
+        // Extract YouTube video ID from URL
+        $videoId = $this->extractYoutubeId($validatedData['video']);
+        
+        if (!$videoId) {
+            return response()->json([
+                'message' => 'Invalid YouTube URL'
+            ], 422);
         }
 
-        $video->fill($validatedData);
+        $video->video = $videoId;
         $video->save();
 
         return response()->json([
-            'message' => 'Video updated successfully',
+            'message' => 'YouTube video updated successfully',
             'data' => $video
         ]);
+    }
+
+    private function extractYoutubeId($url)
+    {
+        // Handle various YouTube URL formats
+        $pattern = '/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i';
+        preg_match($pattern, $url, $matches);
+        return $matches[1] ?? null;
     }
 }
