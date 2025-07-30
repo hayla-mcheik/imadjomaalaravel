@@ -27,7 +27,7 @@ public function index()
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'color' => 'required|string',
-            'links' => 'required|string',
+            'links' => 'nullable|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
 
@@ -77,7 +77,7 @@ public function index()
             'title' => 'sometimes|string|max:255',
             'description' => 'sometimes|string',
             'color' => 'sometimes|string',
-            'links' => 'sometimes|string',
+            'links' => 'nullable|string',
             'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
 
