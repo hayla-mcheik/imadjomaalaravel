@@ -85,7 +85,6 @@ Route::delete('/logos/{id}', [LogosController::class, 'destroy']);
 
 Route::get('/settings', [SettingController::class, 'index']);
 Route::post('/settings', [SettingController::class, 'update']);
-
 });
 
 Route::get('about' , [FrontendController::class , 'about']);
