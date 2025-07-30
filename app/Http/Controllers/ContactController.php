@@ -31,7 +31,7 @@ class ContactController extends Controller
         try {
             Mail::to('mcheikhayla26@gmail.com')->send(new ContactFormNotification($contact));
         } catch (\Exception $e) {
- ;
+            \Log::error('Failed to send contact email: ' . $e->getMessage());
         }
 
         return response()->json([

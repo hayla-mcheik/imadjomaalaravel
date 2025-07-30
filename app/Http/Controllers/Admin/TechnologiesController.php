@@ -28,7 +28,7 @@ public function index()
             'description' => 'nullable|string',
             'color' => 'required|string',
               'links' => 'required|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
 
         if ($request->hasFile('image')) {
@@ -78,7 +78,7 @@ public function index()
             'description' => 'nullable|string',
             'color' => 'sometimes|string',
             'links' => 'sometimes|string',
-            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
 
         if ($request->hasFile('image')) {
