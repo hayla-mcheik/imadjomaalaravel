@@ -5,15 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Contact;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactFormNotification;
 class ContactController extends Controller
 {
-        public function submit(Request $request)
+    public function submit(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|email',
-            'company' => 'nullable|string|max:20',
+            'company' => 'nullable|string|max:255',
             'message' => 'required|string|min:10'
         ]);
 
@@ -24,7 +25,14 @@ class ContactController extends Controller
             ], 422);
         }
 
-        Contact::create($request->only(['name', 'email', 'company', 'message']));
+        $contact = Contact::create($request->only(['name', 'email', 'company', 'message']));
+
+        // Send email notification
+        try {
+            Mail::to('mcheikhayla26@gmail.com')->send(new ContactFormNotification($contact));
+        } catch (\Exception $e) {
+ ;
+        }
 
         return response()->json([
             'success' => true,
