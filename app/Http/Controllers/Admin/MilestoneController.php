@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 class MilestoneController extends Controller
 {
-        public function index()
-    {
-        $milestone = Milestone::orderBy('date', 'desc')->get();
-        return response()->json($milestone);
-    }
+public function index()
+{
+    $milestone = Milestone::orderBy('date', 'asc')->get(); // ASC = Oldest to latest
+    return response()->json($milestone);
+}
 
     /**
      * Store a newly created milestone in storage.

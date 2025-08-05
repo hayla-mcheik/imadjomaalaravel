@@ -10,7 +10,7 @@ class NewsController extends Controller
 {
         public function index()
     {
-        $news = News::orderBy('date', 'desc')->get();
+        $news = News::orderBy('date', 'asc')->get();
         return response()->json($news);
     }
 
@@ -80,6 +80,7 @@ class NewsController extends Controller
         if ($request->hasFile('image')) {
             // Delete old image if exists
             if ($news->image) {
+                
                 Storage::delete($news->image);
             }
             
