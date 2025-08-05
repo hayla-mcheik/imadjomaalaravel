@@ -10,7 +10,7 @@ class NewsController extends Controller
 {
         public function index()
     {
-        $news = News::orderBy('date', 'asc')->get();
+        $news = News::orderBy('date', 'desc')->get();
         return response()->json($news);
     }
 
