@@ -32,6 +32,7 @@ class FrontendController extends Controller
         public function video()
     {
         $video = Video::first();
+        \Log::info($video);
         return response()->json([
 'video' => $video,
         ]);
