@@ -18,7 +18,7 @@ class ContactFormNotification extends Mailable
         $this->contact = $contact;
     }
 
-public function build()
+public function build(): ContactFormNotification
 {
     return $this->subject('New Contact Form Submission')
                 ->view('emails.contact-notification')

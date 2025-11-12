@@ -10,7 +10,8 @@ class MilestoneController extends Controller
 {
 public function index()
 {
-    $milestone = Milestone::orderBy('date', 'asc')->get(); // ASC = Oldest to latest
+    $milestone = Milestone::orderBy('date', 'desc')->get(); // ASC = Oldest to latest
+    
     return response()->json($milestone);
 }
 
